@@ -64,6 +64,31 @@
       background: #ffe398;
       color: #111;
     }
+
+    /* Bookmark button style */
+    #bookmarkButton {
+      display: inline-block;
+      background: #ffcd26;
+      color: #000;
+      border: 2px solid #fff;
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+      font-size: 1.05em;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 2em 0 1em 0;
+      box-shadow: 0 2px 8px #0002;
+      user-select: none;
+      transition: background 0.13s, color 0.13s;
+      outline: none;
+    }
+    #bookmarkButton:hover,
+    #bookmarkButton:focus {
+      background: #ffe398;
+      color: #111;
+    }
+
     .dex-result-box {
       background: #191c1f;
       color: #fff;
@@ -106,6 +131,10 @@
         width: 94vw;
         max-width: 330px;
       }
+      #bookmarkButton {
+        font-size: 1em;
+        padding: 0.6em 1.4em;
+      }
     }
   </style>
 </head>
@@ -140,8 +169,14 @@
   <footer>
     <div style="margin-top:2em;padding:2em 0 1em 0;text-align:center;background:#181c20;font-size:1em;opacity:.95;">
       <div>
-        Automated scam detection, contract auditing, and risk analysis<br>
+        Automated scam detection, contract auditing, and risk analysis
+        <br>
         Integration with platforms like Axiom, GMGN, Photon... for fast search
+      </div>
+      <!-- BOUTON BOOKMARK ET SCRIPT -->
+      <div>
+        <button id="bookmarkButton" title="Use integration bookmarklet">Use the integration</button>
+        <!-- SCRIPT BOOKMARK ICI -->
       </div>
       <div style="margin:2em 0 0 0;">
         Sniffer Pro smart contract scanner technology is part of Solidus Labs’ full spectrum trade surveillance solutions.<br>
@@ -193,5 +228,6 @@
       if (e.key === 'Enter') document.getElementById('analyzeButton').click();
     });
   </script>
+  <!-- Ton script JS pour le bookmark peut être inséré ici -->
 </body>
 </html>
