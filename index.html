@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/png" href="/bookmark.png">
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="Sniffer Pro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to better understand the risks.">
+  <meta name="description" content="Sniffer Pro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to detect potential risks.">
   <link rel="icon" href="/logo2.png">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="c4878894de063c7e.css">
@@ -140,10 +140,10 @@
   <footer>
     <div style="margin-top:2em;padding:2em 0 1em 0;text-align:center;background:#181c20;font-size:1em;opacity:.95;">
       <div>
-  Automated scam detection, contract auditing, and risk analysis<br>
-  Support for <span class="dex-link" title="Solana, Ethereum, Base, BSC, Polygon, Fantom, Arbitrum, Blast, Optimism, Avalanche, xDai, Harmony, KCC, Cronos, Oasis">15 chains</span><br>
-  Integration with platforms like Axiom, GMGN, Photon... for fast search
-</div>
+        Automated scam detection, contract auditing, and risk analysis<br>
+        Support for <a href="https://Sniffer Pro.readme.io/reference/supported-networks" target="_blank" class="dex-link" title="Solana, Ethereum, Base, BSC, Polygon, Fantom, Arbitrum, Blast, Optimism">multiple networks</a>
+        Integration with platforms like Axiom, GMGN, Photon... for fast search
+      </div>
       <div style="margin:2em 0 0 0;">
         Sniffer Pro smart contract scanner technology is part of Solidus Labs’ full spectrum trade surveillance solutions.<br>
         Visit: <a href="https://soliduslabs.com/" target="_blank" class="dex-link">https://soliduslabs.com</a>
@@ -171,15 +171,15 @@
         if (data.pairs && data.pairs.length > 0) {
           const pair = data.pairs[0];
           html += `<div class="dex-result-box">`;
-          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#ffcd26;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;word-break:break-all;">${pair.url}</a></div>`;
+          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#ffcd26;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;width:auto;">${pair.baseToken?.symbol || '-'} / ${pair.quoteToken?.symbol || '-'}</a></div>`;
           html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Chain:</span> <span>${pair.chainId}</span></div>`;
           html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Base Token:</span> <span>${pair.baseToken?.symbol || '-'}${pair.baseToken?.name ? ' ('+pair.baseToken.name+')' : ''}</span></div>`;
           html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Price:</span> <span>${pair.priceUsd ? '$'+Number(pair.priceUsd).toPrecision(7) : '-'}</span></div>`;
           if (pair.liquidity?.usd) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Liquidity:</span> <span>$${Number(pair.liquidity.usd).toLocaleString()}</span></div>`;
           if (pair.txns && typeof pair.txns.h24 === "number") html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Transactions (24h):</span> <span>${pair.txns.h24}</span></div>`;
           if (pair.volume?.h24) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Volume (24h):</span> <span>$${Number(pair.volume.h24).toLocaleString()}</span></div>`;
-          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" style="color:#ffcd26;text-decoration:underline;word-break:break-all;">${pair.websites[0].url}</a></div>`;
-          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;margin-right:.5em;">${s.platform}</a>`).join('')}</div>`;
+          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" class="dex-link">${pair.websites[0].url}</a></div>`;
+          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" class="dex-link">${s.url}</a>`).join(', ')}</div>`;
           html += `</div>`;
         } else {
           html = `<span class="dex-warning">No result found for this address or pair.</span>`;
