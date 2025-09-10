@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sniffer Pro</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/bookmark.png">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Sniffer Pro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to better understand the risks.">
+  <link rel="icon" href="/logo2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c4878894de063c7e.css">
+  <style>
+    body {
+      background: #222;
+      color: #fff;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .main-center {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #tokenInput {
+      width: 420px;
+      max-width: 90vw;
+      font-size: 1.2em;
+      border-radius: 32px;
+      border: none;
+      box-shadow: 0 2px 8px #0003;
+      padding: 0.8em 1.4em;
+      margin-bottom: 2em;
+      outline: none;
+      background: #fff;
+      color: #222;
+      transition: box-shadow 0.2s;
+    }
+    #tokenInput:focus {
+      box-shadow: 0 4px 16px #ffcd2699;
+    }
+    #analyzeButton {
+      display: inline-block;
+      background: #ffcd26;
+      color: #000;
+      border: 2px solid #fff;
+      border-radius: 2em;
+      padding: 0.7em 2.2em;
+      font-size: 1.4em;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 0 auto 2em auto;
+      box-shadow: 0 2px 8px #0002;
+      user-select: none;
+      transition: background 0.13s, color 0.13s;
+      outline: none;
+    }
+    #analyzeButton:hover,
+    #analyzeButton:focus {
+      background: #ffe398;
+      color: #111;
+    }
+    .dex-result-box {
+      background: #191c1f;
+      color: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 #0007;
+      padding: 1.6em 2em 1.4em 2em;
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto 2em auto;
+      font-size: 1.15em;
+      font-family: inherit;
+      word-break: break-all;
+    }
+    .dex-result-box a { color: #ffcd26; text-decoration: underline; }
+    .dex-error {
+      color: #d32f2f;
+      font-size: 1.3em;
+      margin-top: 1.5em;
+    }
+    .dex-warning {
+      color: orange;
+      font-size: 1.15em;
+      margin-top: 1.5em;
+    }
+    .dex-link {
+      color: #ffcd26;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      #tokenInput {
+        width: 96vw;
+        font-size: 1em;
+        padding: 0.7em 1em;
+      }
+      .dex-result-box {
+        padding: 0.6em;
+        font-size: 1em;
+      }
+      .main-center img {
+        width: 94vw;
+        max-width: 330px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-center">
+    <div style="text-align:center">
+      <img src="logo2.png" alt="logo" style="width:270px;max-width:60vw;margin-bottom:1em;">
+      <div style="font-size:2em;margin-bottom:1.5em;">
+        Actively monitoring <span style="color:#ffcd26;">27 132 449</span> tokens<br/>
+        and <span style="color:#ffcd26;">2 867 775</span> scams
+      </div>
+      <!-- BARRE DE RECHERCHE CENTREE -->
+      <input
+        id="tokenInput"
+        type="search"
+        placeholder="Enter token address or pair (ex: SOL/USDC or 0x...)"
+        maxlength="80"
+        autocomplete="off"
+      />
+      <!-- BOUTON ANALYZE CENTRE -->
+      <br>
+      <button
+        id="analyzeButton"
+        title="Analyze token with Dexscreener"
+      >
+        Analyze
+      </button>
+      <!-- AFFICHAGE RESULTAT OU ERREUR -->
+      <div id="dexResult" style="margin-top:1.5em;min-height:2em;"></div>
+    </div>
+  </div>
+  <footer>
+    <div style="margin-top:2em;padding:2em 0 1em 0;text-align:center;background:#181c20;font-size:1em;opacity:.95;">
+      <div>
+        Automated scam detection, contract auditing, and risk analysis<br>
+        Support for <a href="https://Sniffer Pro.readme.io/reference/supported-networks" target="_blank" class="dex-link" title="Solana, Ethereum, Base, BSC, Polygon, Fantom, Arbitrum, Blast, Optimism, Avalanche, xDai, Harmony, KCC, Cronos, Oasis">15 chains</a><br>
+        Integration with platforms like Axiom, GMGN, Photon... for fast search
+      </div>
+      <div style="margin:2em 0 0 0;">
+        Sniffer Pro smart contract scanner technology is part of Solidus Labs’ full spectrum trade surveillance solutions.<br>
+        Visit: <a href="https://soliduslabs.com/" target="_blank" class="dex-link">https://soliduslabs.com</a>
+      </div>
+      <div style="color:#ffcd26;margin-top:2em;">
+        © Copyright Solidus Labs 2025 
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('analyzeButton').onclick = async function() {
+      const input = document.getElementById('tokenInput').value.trim();
+      const resultDiv = document.getElementById('dexResult');
+      resultDiv.innerHTML = '';
+      if (!input) {
+        resultDiv.innerHTML = '<span class="dex-error">Please enter a token address or pair (ex: SOL/USDC or 0x...)</span>';
+        return;
+      }
+      resultDiv.innerHTML = '⏳ Fetching data...';
+      try {
+        const resp = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${encodeURIComponent(input)}`);
+        if (!resp.ok) throw new Error('Token/pair not found or API error');
+        const data = await resp.json();
+        let html = '';
+        if (data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
+          html += `<div class="dex-result-box">`;
+          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#ffcd26;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;word-break:break-all;">${pair.url}</a></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Chain:</span> <span>${pair.chainId}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Base Token:</span> <span>${pair.baseToken?.symbol || '-'}${pair.baseToken?.name ? ' ('+pair.baseToken.name+')' : ''}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Price:</span> <span>${pair.priceUsd ? '$'+Number(pair.priceUsd).toPrecision(7) : '-'}</span></div>`;
+          if (pair.liquidity?.usd) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Liquidity:</span> <span>$${Number(pair.liquidity.usd).toLocaleString()}</span></div>`;
+          if (pair.txns && typeof pair.txns.h24 === "number") html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Transactions (24h):</span> <span>${pair.txns.h24}</span></div>`;
+          if (pair.volume?.h24) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Volume (24h):</span> <span>$${Number(pair.volume.h24).toLocaleString()}</span></div>`;
+          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" style="color:#ffcd26;text-decoration:underline;word-break:break-all;">${pair.websites[0].url}</a></div>`;
+          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;margin-right:.5em;">${s.platform}</a>`).join('')}</div>`;
+          html += `</div>`;
+        } else {
+          html = `<span class="dex-warning">No result found for this address or pair.</span>`;
+        }
+        resultDiv.innerHTML = html;
+      } catch (e) {
+        resultDiv.innerHTML = `<span class="dex-error">❌ ${e.message}</span>`;
+      }
+    };
+    // Enter key triggers Analyze
+    document.getElementById('tokenInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') document.getElementById('analyzeButton').click();
+    });
+  </script>
+</body>
+</html>
