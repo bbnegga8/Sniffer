@@ -69,12 +69,13 @@
     }
 
     .main-center {
-      min-height: 90vh;
+      min-height: unset;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      margin-top: 18px;
+      margin-top: 0px;
+padding-bottom: 0;
     }
 
     /* Hero Section (Protect Your Crypto) */
@@ -137,7 +138,7 @@
       margin-top: 0;
       width: 80vw;
       max-width: 900px;
-      margin-bottom: 10px; /* réduit l'espace en dessous par défaut */
+      margin-bottom: 50px; /* réduit l'espace en dessous par défaut */
     }
 
     /* Réduit l'espace sous scan-box quand aucun résultat */
@@ -148,20 +149,23 @@
       padding: 0 !important;
     }
 
-    /* Centrage vertical accentué du résultat */
-    #dexResult {
+   /* Centrage vertical accentué du résultat */
+#dexResult {
+  width: 100%;                /* Prend toute la largeur du parent */
+  max-width: 900px;           /* Même valeur que .scan-box */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;        /* Centre horizontalement la box résultat */
   justify-content: flex-start;
-  margin-top: 0 !important;        /* Aucun espace par défaut */
-  min-height: 0 !important;        /* Pas de hauteur minimale */
-  height: 0 !important;            /* Forcer aucune hauteur */
-  padding: 0 !important;           /* Pas de padding */
+  margin: 0 auto;             /* Centre le conteneur dans la page */
+  margin-top: 0 !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
   transition: margin-top 0.2s;
 }
 #dexResult.has-result {
-  margin-top: 65px !important;     /* Espace quand il y a un résultat */
+  margin-top: 30px !important;
   height: auto !important;
 }
 
@@ -182,7 +186,8 @@
   padding: 1.6em 2em 1.4em 2em;
   text-align: left;
   max-width: 520px;
-  margin: 0 auto 2em auto;
+  width: 100%;                      /* Prend toute la largeur dispo jusqu'à 520px */
+  margin: 0 auto 2em auto;           /* Centre horizontalement */
   font-size: 1.15em;
   font-family: inherit;
   word-break: break-all;
