@@ -53,7 +53,6 @@
       vertical-align: middle;
       margin-right: 6px;
       text-shadow: 0 2px 12px #0006;
-      /* Responsive */
     }
     @media (max-width: 600px) {
       .navbar-sniffer {
@@ -116,73 +115,156 @@
       .sniffer-hero { padding: 28px 0 18px 0; }
     }
 
-    #tokenInput {
-      width: 420px;
-      max-width: 90vw;
-      font-size: 1.2em;
-      border-radius: 32px;
-      border: none;
-      box-shadow: 0 2px 8px #0003;
-      padding: 0.8em 1.4em;
-      margin-bottom: 2em;
-      outline: none;
-      background: #fff;
-      color: #222;
-      transition: box-shadow 0.2s;
-    }
-    #tokenInput:focus {
-      box-shadow: 0 4px 16px #60A6FA99;
-    }
-    #analyzeButton {
-      display: inline-block;
-      background: #60A6FA;
-      color: #000;
-      border: 2px solid #000;
-      border-radius: 2em;
-      padding: 0.7em 2.2em;
-      font-size: 1.4em;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 0 auto 2em auto;
-      box-shadow: 0 2px 8px #0002;
-      user-select: none;
-      transition: background 0.13s, color 0.13s;
-      outline: none;
-    }
-    #analyzeButton:hover,
-    #analyzeButton:focus {
-      background: #a5d1fc;
-      color: #111;
+    /* Scan Bar & Button Styles */
+    .scan-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .dex-result-box {
-      background: #191c1f;
-      color: #fff;
-      border-radius: 18px;
-      box-shadow: 0 6px 32px 0 #0007;
-      padding: 1.6em 2em 1.4em 2em;
-      text-align: left;
-      max-width: 520px;
-      margin: 0 auto 2em auto;
-      font-size: 1.15em;
-      font-family: inherit;
-      word-break: break-all;
+    .scan-box {
+      background: none;
+      border-radius: 22px;
+      border: 2px solid #495167;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 24px;
+      padding: 32px 32px;
+      box-shadow: 0 6px 32px 0 #1a1c2080;
+      margin: 0 auto;
+      margin-top: 0;
+      width: 80vw;
+      max-width: 900px;
+      margin-bottom: 10px; /* réduit l'espace en dessous par défaut */
     }
-    .dex-result-box a { color: #60A6FA; text-decoration: underline; }
-    .dex-error {
-      color: #d32f2f;
-      font-size: 1.3em;
-      margin-top: 1.5em;
+
+    /* Réduit l'espace sous scan-box quand aucun résultat */
+    #dexResult:empty {
+      margin-top: 0 !important;
+      min-height: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
     }
+
+    /* Centrage vertical accentué du résultat */
+    #dexResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0 !important;        /* Aucun espace par défaut */
+  min-height: 0 !important;        /* Pas de hauteur minimale */
+  height: 0 !important;            /* Forcer aucune hauteur */
+  padding: 0 !important;           /* Pas de padding */
+  transition: margin-top 0.2s;
+}
+#dexResult.has-result {
+  margin-top: 65px !important;     /* Espace quand il y a un résultat */
+  height: auto !important;
+}
+
+/* Pour forcer aucun espace quand vide */
+#dexResult:empty {
+  margin-top: 0 !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+}
+
+/* Centrer la box résultat affichée */
+.dex-result-box {
+  background: #191c1f;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 #0007;
+  padding: 1.6em 2em 1.4em 2em;
+  text-align: left;
+  max-width: 520px;
+  margin: 0 auto 2em auto;
+  font-size: 1.15em;
+  font-family: inherit;
+  word-break: break-all;
+  display: block;
+}
+
+.dex-result-box a { color: #60A6FA; text-decoration: underline; }
+.dex-error {
+  color: #d32f2f;
+  font-size: 1.3em;
+  margin-top: 1.5em;
+  text-align: center;
+}
     .dex-warning {
       color: #60A6FA;
       font-size: 1.15em;
       margin-top: 1.5em;
+      text-align: center;
     }
     .dex-link {
       color: #60A6FA;
       text-decoration: underline;
+    }
+
+    .scan-input {
+      background: #383f4a;
+      border: 2px solid #646b7c;
+      color: #d1d5db;
+      font-size: 1.34em;
+      padding: 0.7em 1.2em;
+      border-radius: 22px;
+      outline: none;
+      flex: 1;
+      min-width: 0;
+      font-family: inherit;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+    .scan-input::placeholder {
+      color: #bfc4cf;
+      opacity: 1;
+    }
+    .scan-input:focus {
+      border: 2px solid #60A6FA;
+      background: #2d3341;
+      box-shadow: 0 4px 24px #60A6FA20;
+      color: #fff;
+    }
+    .scan-btn {
+      background: #676d79;
+      color: #fff;
+      border: none;
+      border-radius: 22px;
+      padding: 0.7em 2.2em;
+      font-size: 1.28em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px #0002;
+      font-family: inherit;
+      outline: none;
+    }
+    .scan-btn:hover,
+    .scan-btn:focus {
+      background: #778198;
+    }
+    .scan-icon {
+      display: inline-block;
+      line-height: 1;
+      height: 1.2em;
+      width: 1.2em;
+    }
+    .scan-btn-text {
+      display: inline-block;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 700px) {
+      .scan-box { flex-direction: column; gap: 18px; padding: 16px 8px; }
+      .scan-btn, .scan-input { width: 100%; font-size: 1.05em; }
     }
 
     /* --- NEW SECTION STYLES --- */
@@ -357,7 +439,6 @@
       box-shadow: 0 2px 8px #0002;
       border: 2px solid #000;
       opacity: 0.95;
-      /* Button is just a placeholder. Replace with real bookmarklet button + JS */
     }
 
     /* White separator bar with circle, on colored background (not transparent) */
@@ -468,11 +549,8 @@
       .white-separator-side { max-width: 23vw; }
     }
     @media (max-width: 600px) {
-      #tokenInput {
-        width: 96vw;
-        font-size: 1em;
-        padding: 0.7em 1em;
-      }
+      .scan-box { flex-direction: column; gap: 18px; padding: 16px 8px; }
+      .scan-btn, .scan-input { width: 100%; font-size: 1.05em; }
       .dex-result-box {
         padding: 0.6em;
         font-size: 1em;
@@ -508,26 +586,30 @@
     </div>
   </section>
   <div class="main-center">
-    <div style="text-align:center">
-      <!-- BARRE DE RECHERCHE CENTREE -->
-      <input
-        id="tokenInput"
-        type="search"
-        placeholder="Enter token address or pair (ex: SOL/USDC or 0x...)"
-        maxlength="80"
-        autocomplete="off"
-      />
-      <!-- BOUTON ANALYZE CENTRE -->
-      <br>
-      <button
-        id="analyzeButton"
-        title="Analyze token with Dexscreener"
-      >
-        Analyze
-      </button>
-      <!-- AFFICHAGE RESULTAT OU ERREUR -->
-      <div id="dexResult" style="margin-top:1.5em;min-height:2em;"></div>
-    </div>
+    <form class="scan-form" onsubmit="event.preventDefault(); document.getElementById('scanButton').click();">
+      <div class="scan-box">
+        <input
+          id="tokenInput"
+          class="scan-input"
+          type="search"
+          placeholder="Enter token contract address (0x...)"
+          maxlength="80"
+          autocomplete="off"
+        />
+        <button
+          id="scanButton"
+          type="button"
+          class="scan-btn"
+          title="Scan token with Dexscreener"
+        >
+          <span class="scan-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle"><circle cx="10" cy="10" r="8" stroke="#fff" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="20" y2="20" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="scan-btn-text">Scan Token</span>
+        </button>
+      </div>
+      <div id="dexResult"></div>
+    </form>
   </div>
 
   <!-- SECTION INTERMEDIAIRE AJOUTEE -->
@@ -641,7 +723,6 @@
         Use the integration
       </div>
     </div>
-    <!-- Bookmarklet script button will go here (TODO: insert JS bookmarklet for integration) -->
   </section>
   <!-- END JOIN THE PACK SECTION -->
 
@@ -662,15 +743,25 @@
     </div>
   </footer>
   <script>
-    document.getElementById('analyzeButton').onclick = async function() {
+    document.getElementById('scanButton').onclick = async function() {
       const input = document.getElementById('tokenInput').value.trim();
       const resultDiv = document.getElementById('dexResult');
       resultDiv.innerHTML = '';
       if (!input) {
-        resultDiv.innerHTML = '<span class="dex-error">Please enter a token address or pair (ex: SOL/USDC or 0x...)</span>';
+        resultDiv.innerHTML = '<span class="dex-error">Please enter a token contract address (0x...)</span>';
+        if (resultDiv.innerHTML.trim()) {
+          resultDiv.classList.add('has-result');
+        } else {
+          resultDiv.classList.remove('has-result');
+        }
         return;
       }
       resultDiv.innerHTML = '⏳ Fetching data...';
+      if (resultDiv.innerHTML.trim()) {
+        resultDiv.classList.add('has-result');
+      } else {
+        resultDiv.classList.remove('has-result');
+      }
       try {
         const resp = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${encodeURIComponent(input)}`);
         if (!resp.ok) throw new Error('Token/pair not found or API error');
@@ -693,13 +784,23 @@
           html = `<span class="dex-warning">No result found for this address or pair.</span>`;
         }
         resultDiv.innerHTML = html;
+        if (resultDiv.innerHTML.trim()) {
+          resultDiv.classList.add('has-result');
+        } else {
+          resultDiv.classList.remove('has-result');
+        }
       } catch (e) {
         resultDiv.innerHTML = `<span class="dex-error">❌ ${e.message}</span>`;
+        if (resultDiv.innerHTML.trim()) {
+          resultDiv.classList.add('has-result');
+        } else {
+          resultDiv.classList.remove('has-result');
+        }
       }
     };
-    // Enter key triggers Analyze
+    // Enter key triggers Scan Token
     document.getElementById('tokenInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') document.getElementById('analyzeButton').click();
+      if (e.key === 'Enter') document.getElementById('scanButton').click();
     });
   </script>
 </body>
