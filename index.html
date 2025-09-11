@@ -24,7 +24,7 @@
     }
     .navbar-sniffer {
       width: 100%;
-      background: #202a3a;
+      background: #1d2634;
       height: 66px;
       display: flex;
       align-items: center;
@@ -75,7 +75,7 @@
       align-items: center;
       justify-content: flex-start;
       margin-top: 0px;
-padding-bottom: 0;
+      padding-bottom: 0;
     }
 
     /* Hero Section (Protect Your Crypto) */
@@ -149,58 +149,58 @@ padding-bottom: 0;
       padding: 0 !important;
     }
 
-   /* Centrage vertical accentué du résultat */
-#dexResult {
-  width: 100%;                /* Prend toute la largeur du parent */
-  max-width: 900px;           /* Même valeur que .scan-box */
-  display: flex;
-  flex-direction: column;
-  align-items: center;        /* Centre horizontalement la box résultat */
-  justify-content: flex-start;
-  margin: 0 auto;             /* Centre le conteneur dans la page */
-  margin-top: 0 !important;
-  min-height: 0 !important;
-  height: 0 !important;
-  padding: 0 !important;
-  transition: margin-top 0.2s;
-}
-#dexResult.has-result {
-  margin-top: 30px !important;
-  height: auto !important;
-}
+    /* Centrage vertical accentué du résultat */
+    #dexResult {
+      width: 100%;                /* Prend toute la largeur du parent */
+      max-width: 900px;           /* Même valeur que .scan-box */
+      display: flex;
+      flex-direction: column;
+      align-items: center;        /* Centre horizontalement la box résultat */
+      justify-content: flex-start;
+      margin: 0 auto;             /* Centre le conteneur dans la page */
+      margin-top: 0 !important;
+      min-height: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      transition: margin-top 0.2s;
+    }
+    #dexResult.has-result {
+      margin-top: 30px !important;
+      height: auto !important;
+    }
 
-/* Pour forcer aucun espace quand vide */
-#dexResult:empty {
-  margin-top: 0 !important;
-  min-height: 0 !important;
-  height: 0 !important;
-  padding: 0 !important;
-}
+    /* Pour forcer aucun espace quand vide */
+    #dexResult:empty {
+      margin-top: 0 !important;
+      min-height: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+    }
 
-/* Centrer la box résultat affichée */
-.dex-result-box {
-  background: #191c1f;
-  color: #fff;
-  border-radius: 18px;
-  box-shadow: 0 6px 32px 0 #0007;
-  padding: 1.6em 2em 1.4em 2em;
-  text-align: left;
-  max-width: 520px;
-  width: 100%;                      /* Prend toute la largeur dispo jusqu'à 520px */
-  margin: 0 auto 2em auto;           /* Centre horizontalement */
-  font-size: 1.15em;
-  font-family: inherit;
-  word-break: break-all;
-  display: block;
-}
+    /* Centrer la box résultat affichée */
+    .dex-result-box {
+      background: #191c1f;
+      color: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 #0007;
+      padding: 1.6em 2em 1.4em 2em;
+      text-align: left;
+      max-width: 520px;
+      width: 100%;                      /* Prend toute la largeur dispo jusqu'à 520px */
+      margin: 0 auto 2em auto;           /* Centre horizontalement */
+      font-size: 1.15em;
+      font-family: inherit;
+      word-break: break-all;
+      display: block;
+    }
 
-.dex-result-box a { color: #60A6FA; text-decoration: underline; }
-.dex-error {
-  color: #d32f2f;
-  font-size: 1.3em;
-  margin-top: 1.5em;
-  text-align: center;
-}
+    .dex-result-box a { color: #60A6FA; text-decoration: underline; }
+    .dex-error {
+      color: #d32f2f;
+      font-size: 1.3em;
+      margin-top: 1.5em;
+      text-align: center;
+    }
     .dex-warning {
       color: #60A6FA;
       font-size: 1.15em;
@@ -290,7 +290,7 @@ padding-bottom: 0;
       font-size: 1.35em;
       margin-bottom: 2.5em;
       font-weight: 400;
-      color: #fff;
+      color: #C1C6CC;
       opacity: 0.95;
     }
     .toolkit-grid {
@@ -354,7 +354,7 @@ padding-bottom: 0;
     .section-why .why-subtitle {
       font-size: 1.25em;
       margin-bottom: 2.2em;
-      color: #fff;
+      color: #C1C6CC;
       opacity: 0.95;
     }
     .why-features {
@@ -414,7 +414,7 @@ padding-bottom: 0;
     }
     .section-joinpack .joinpack-desc {
       font-size: 1.32em;
-      color: #fff;
+      color: #C1C6CC;
       margin-bottom: 2.5em;
       font-weight: 400;
       opacity: 0.94;
@@ -429,23 +429,31 @@ padding-bottom: 0;
       justify-content: center;
       min-height: 76px;
     }
+    /* Nouveau bouton bookmark blue style */
     .section-joinpack .bookmark-btn-placeholder {
-      display: inline-block;
-      min-width: 260px;
-      min-height: 56px;
-      border-radius: 32px;
-      background: #60A6FA;
-      color: #000;
-      font-size: 1.35em;
-      font-weight: 700;
-      text-align: center;
-      line-height: 56px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #0002;
-      border: 2px solid #000;
-      opacity: 0.95;
-    }
-
+  display: inline-block;
+  min-width: 260px;
+  min-height: 56px;
+  border-radius: 20px; /* petit arrondi, style carré */
+  background: transparent;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 56px;
+  cursor: pointer;
+  box-shadow: none;
+  border: 2.5px solid #828ba1;
+  opacity: 1;
+  padding: 0 2.5em;
+  font-family: inherit;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.section-joinpack .bookmark-btn-placeholder:hover {
+  background: #232b39;
+  color: #60A6FA;
+  border-color: #60A6FA;
+}
     /* White separator bar with circle, on colored background (not transparent) */
     .white-separator-outer {
       width: 100%;
