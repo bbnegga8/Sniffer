@@ -2,22 +2,73 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Sniffer Pro</title>
+  <title>SnifferPro</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/png" href="/bookmark.png">
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="Sniffer Pro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to detect potential risks.">
+  <meta name="description" content="SnifferPro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to detect potential risks.">
   <link rel="icon" href="/logo2.png">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="c4878894de063c7e.css">
   <style>
     body {
-      background: #222;
+      background: #1D2634;
       color: #fff;
       font-family: 'Nunito Sans', Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
+    ::selection {
+      background: #60A6FA;
+      color: #fff;
+    }
+    .navbar-sniffer {
+      width: 100%;
+      background: #202a3a;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 0 0 26px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 18px 0 #00000018;
+      z-index: 100;
+      position: relative;
+    }
+    .navbar-sniffer-logo {
+      height: 34px;
+      width: auto;
+      margin-right: 16px;
+      display: inline-block;
+      vertical-align: middle;
+      user-select: none;
+    }
+    .navbar-sniffer-title {
+      color: #fff;
+      font-size: 2.05em;
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-family: inherit;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      text-shadow: 0 2px 12px #0006;
+      /* Responsive */
+    }
+    @media (max-width: 600px) {
+      .navbar-sniffer {
+        padding-left: 10px;
+        height: 50px;
+      }
+      .navbar-sniffer-logo {
+        height: 26px;
+        margin-right: 9px;
+      }
+      .navbar-sniffer-title {
+        font-size: 1.15em;
+      }
+    }
+
     .main-center {
       min-height: 90vh;
       display: flex;
@@ -25,6 +76,45 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* Hero Section (Protect Your Crypto) */
+    .sniffer-hero {
+      background: #1d2634;
+      padding: 48px 0 44px 0;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .sniffer-hero-title {
+      color: #fff;
+      font-size: 4.2em;
+      font-weight: 900;
+      margin: 0 0 18px 0;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+      line-height: 1.14;
+      text-shadow: 0 2px 16px #0004;
+    }
+    .sniffer-hero-subtitle {
+      color: #d1d5db;
+      font-size: 1.5em;
+      font-weight: 400;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.26;
+      opacity: 0.95;
+      text-shadow: 0 1px 4px #0002;
+    }
+    @media (max-width: 900px) {
+      .sniffer-hero-title {
+        font-size: 2.5em;
+      }
+      .sniffer-hero-subtitle {
+        font-size: 1.18em;
+      }
+      .sniffer-hero { padding: 28px 0 18px 0; }
+    }
+
     #tokenInput {
       width: 420px;
       max-width: 90vw;
@@ -40,13 +130,13 @@
       transition: box-shadow 0.2s;
     }
     #tokenInput:focus {
-      box-shadow: 0 4px 16px #ffcd2699;
+      box-shadow: 0 4px 16px #60A6FA99;
     }
     #analyzeButton {
       display: inline-block;
-      background: #ffcd26;
+      background: #60A6FA;
       color: #000;
-      border: 2px solid #fff;
+      border: 2px solid #000;
       border-radius: 2em;
       padding: 0.7em 2.2em;
       font-size: 1.4em;
@@ -61,31 +151,7 @@
     }
     #analyzeButton:hover,
     #analyzeButton:focus {
-      background: #ffe398;
-      color: #111;
-    }
-
-    /* Bookmark button style */
-    #bookmarkButton {
-      display: inline-block;
-      background: #ffcd26;
-      color: #000;
-      border: 2px solid #fff;
-      border-radius: 2em;
-      padding: 0.5em 1.5em;
-      font-size: 1.05em;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 2em 0 1em 0;
-      box-shadow: 0 2px 8px #0002;
-      user-select: none;
-      transition: background 0.13s, color 0.13s;
-      outline: none;
-    }
-    #bookmarkButton:hover,
-    #bookmarkButton:focus {
-      background: #ffe398;
+      background: #a5d1fc;
       color: #111;
     }
 
@@ -102,20 +168,303 @@
       font-family: inherit;
       word-break: break-all;
     }
-    .dex-result-box a { color: #ffcd26; text-decoration: underline; }
+    .dex-result-box a { color: #60A6FA; text-decoration: underline; }
     .dex-error {
       color: #d32f2f;
       font-size: 1.3em;
       margin-top: 1.5em;
     }
     .dex-warning {
-      color: orange;
+      color: #60A6FA;
       font-size: 1.15em;
       margin-top: 1.5em;
     }
     .dex-link {
-      color: #ffcd26;
+      color: #60A6FA;
       text-decoration: underline;
+    }
+
+    /* --- NEW SECTION STYLES --- */
+    .section-toolkit {
+      background: #26303F;
+      padding: 60px 0 30px 0;
+      text-align: center;
+      width: 100%;
+    }
+    .section-toolkit h2 {
+      color: #60A6FA;
+      font-size: 2.8em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-toolkit .toolkit-subtitle {
+      font-size: 1.35em;
+      margin-bottom: 2.5em;
+      font-weight: 400;
+      color: #fff;
+      opacity: 0.95;
+    }
+    .toolkit-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto 3em auto;
+    }
+    .toolkit-card {
+      background: #191c1f;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 #0007;
+      color: #fff;
+      flex: 1 1 320px;
+      max-width: 350px;
+      min-width: 280px;
+      padding: 2em 1.5em 1.6em 1.5em;
+      margin: 0;
+      text-align: left;
+      font-family: inherit;
+      border: 1.5px solid #222;
+      position: relative;
+      transition: transform 0.13s;
+    }
+    .toolkit-card:hover { transform: translateY(-4px) scale(1.02);}
+    .toolkit-card .icon {
+      font-size: 2em;
+      color: #60A6FA;
+      margin-bottom: 0.6em;
+      display: block;
+    }
+    .toolkit-card h3 {
+      font-size: 1.3em;
+      margin: 0 0 0.5em 0;
+      font-family: inherit;
+      font-weight: 700;
+      color: #60A6FA;
+    }
+    .toolkit-card p {
+      margin: 0;
+      font-size: 1.07em;
+      opacity: 0.97;
+    }
+    /* Why Sniffer Pro Section */
+    .section-why {
+      background: #26303F;
+      padding: 52px 0 40px 0;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+    }
+    .section-why h2 {
+      color: #60A6FA;
+      font-size: 2.5em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-why .why-subtitle {
+      font-size: 1.25em;
+      margin-bottom: 2.2em;
+      color: #fff;
+      opacity: 0.95;
+    }
+    .why-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px 16px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .why-feature-col {
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 390px;
+      text-align: left;
+      padding: 0 1.2em;
+    }
+    .why-feature-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .why-feature-col li {
+      font-size: 1.08em;
+      margin-bottom: 1.7em;
+      position: relative;
+      padding-left: 2em;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+    .why-feature-col li:before {
+      content: '✓';
+      color: #60A6FA;
+      font-size: 1.14em;
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      font-weight: 700 !important;
+      font-family: inherit;
+    }
+
+    /* -- JOIN THE PACK SECTION -- */
+    .section-joinpack {
+      background: #26303F;
+      /* Reduce top margin to shrink gap with previous section */
+      padding: 24px 0 70px 0;
+      text-align: center;
+      width: 100%;
+      position: relative;
+    }
+    .section-joinpack h2 {
+      color: #60A6FA;
+      font-size: 2.6em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-joinpack .joinpack-desc {
+      font-size: 1.32em;
+      color: #fff;
+      margin-bottom: 2.5em;
+      font-weight: 400;
+      opacity: 0.94;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-joinpack .joinpack-btn-wrap {
+      margin-top: 1.7em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 76px;
+    }
+    .section-joinpack .bookmark-btn-placeholder {
+      display: inline-block;
+      min-width: 260px;
+      min-height: 56px;
+      border-radius: 32px;
+      background: #60A6FA;
+      color: #000;
+      font-size: 1.35em;
+      font-weight: 700;
+      text-align: center;
+      line-height: 56px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      border: 2px solid #000;
+      opacity: 0.95;
+      /* Button is just a placeholder. Replace with real bookmarklet button + JS */
+    }
+
+    /* White separator bar with circle, on colored background (not transparent) */
+    .white-separator-outer {
+      width: 100%;
+      background: #26303F !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      min-height: 48px;
+      padding: 0;
+    }
+    .white-separator {
+      width: 100%;
+      max-width: 900px;
+      height: 38px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+    .white-separator-side {
+      flex: 1 1 0%;
+      height: 48px;
+      background: #26303F;
+      max-width: 23%;
+      min-width: 90px;
+      border: none;
+      margin: 0;
+      z-index: 3;
+      position: relative;
+    }
+    .white-separator-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      background: #26303F;
+    }
+    .white-separator-arrow svg {
+      display: block;
+      width: 42px;
+      height: 22px;
+      fill: #26303F;
+    }
+    .white-separator-arrow.left {
+      left: 0;
+      justify-content: flex-start;
+      border-radius: 8px 0 0 8px;
+    }
+    .white-separator-arrow.right {
+      right: 0;
+      justify-content: flex-end;
+      border-radius: 0 8px 8px 0;
+    }
+    .white-separator-center {
+      flex: 4 1 0%;
+      display: flex;
+      align-items: center;
+      height: 38px;
+      position: relative;
+      min-width: 30%;
+      z-index: 4;
+      background: none;
+    }
+    .white-separator-line {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, transparent 0%, #fff 22%, #fff 78%, transparent 100%);
+      border: none;
+      z-index: 5;
+      position: relative;
+    }
+    .white-separator-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      z-index: 6;
+      box-shadow: 0 0 22px 0 #fff5;
+      border: 0;
+      display: block;
+    }
+    @media (max-width: 1200px) {
+      .white-separator, .white-separator-outer { max-width: 97vw; }
+      .white-separator-side { min-width: 40px; }
+    }
+    @media (max-width: 900px) {
+      .toolkit-grid, .why-features { flex-direction: column; gap: 20px;}
+      .toolkit-card, .why-feature-col { max-width: 98vw;}
+      .section-toolkit, .section-why, .section-joinpack { padding: 30px 0 20px 0; }
+      .section-joinpack { padding-top: 10px; }
+      .white-separator, .white-separator-outer { max-width: 99vw; }
+      .white-separator-side { max-width: 23vw; }
     }
     @media (max-width: 600px) {
       #tokenInput {
@@ -131,21 +480,34 @@
         width: 94vw;
         max-width: 330px;
       }
-      #bookmarkButton {
-        font-size: 1em;
-        padding: 0.6em 1.4em;
-      }
+      .toolkit-card { padding: 1.2em 0.6em 1em 0.6em;}
+      .toolkit-grid, .why-features { gap: 10px;}
+      .section-joinpack .bookmark-btn-placeholder { min-width: 160px; font-size: 1.1em; }
+      .white-separator-side { min-width: 10px; }
+      .white-separator-arrow { width: 30px; }
+      .white-separator-arrow svg { width: 30px; }
+      .sniffer-hero-title { font-size: 1.45em; }
+      .sniffer-hero-subtitle { font-size: 0.95em; }
+      .sniffer-hero { padding: 14px 0 12px 0; }
     }
   </style>
 </head>
 <body>
+  <!-- NAVBAR SNIPPER PRO (remplace le gros logo) -->
+  <nav class="navbar-sniffer">
+    <img src="logo.png" alt="SnifferPro logo" class="navbar-sniffer-logo" draggable="false">
+    <span class="navbar-sniffer-title">SnifferPro</span>
+  </nav>
+  <!-- HERO SECTION -->
+  <section class="sniffer-hero">
+    <div class="sniffer-hero-title">Protect Your Crypto</div>
+    <div class="sniffer-hero-subtitle">
+  Advanced memecoin analysis to detect rug pulls, honeypots, and scams<br>
+  before you invest
+</div>
+  </section>
   <div class="main-center">
     <div style="text-align:center">
-      <img src="logo2.png" alt="logo" style="width:270px;max-width:60vw;margin-bottom:1em;">
-      <div style="font-size:2em;margin-bottom:1.5em;">
-        Actively monitoring <span style="color:#ffcd26;">27 132 449</span> tokens<br/>
-        and <span style="color:#ffcd26;">2 867 775</span> scams
-      </div>
       <!-- BARRE DE RECHERCHE CENTREE -->
       <input
         id="tokenInput"
@@ -166,23 +528,134 @@
       <div id="dexResult" style="margin-top:1.5em;min-height:2em;"></div>
     </div>
   </div>
+
+  <!-- SECTION INTERMEDIAIRE AJOUTEE -->
+  <section class="section-toolkit">
+    <h2>The Sniffer's Toolkit</h2>
+    <div class="toolkit-subtitle">
+      All the tools your trusty companion uses to separate the treats from the trash,<br>
+      powered by cutting-edge AI and real-time data.
+    </div>
+    <div class="toolkit-grid">
+      <div class="toolkit-card">
+        <span class="icon">🟦</span>
+        <h3>The Sniff Test</h3>
+        <p>Our AI sniffs out the good, the bad, and the fishy, turning complex on-chain data into a simple "Good Boy" signal.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">🛡️</span>
+        <h3>Guard Dog Security</h3>
+        <p>We check for locked liquidity, renounced contracts, and other rug-pull red flags. We bark <strong>*before*</strong> you get bit.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">📊</span>
+        <h3>The Chase</h3>
+        <p>Live price action, trading volume, and social buzz. Know when the chase is on and follow the momentum.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">⚡</span>
+        <h3>Instant Fetch</h3>
+        <p>No more digging through dozens of sites. Get a full, easy-to-read report on any token in under 10 seconds.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">🔍</span>
+        <h3>Pack Dynamics</h3>
+        <p>See who's holding the leash. We track whale wallets and concentration risks so you know who runs the pack.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">✨</span>
+        <h3>Purebred for Solana</h3>
+        <p>Born and bred on Solana. Our tool speaks fluent SPL and is native to the ecosystem's top DEXs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator Line above "Why Sniffer Pro?" -->
+  <div class="white-separator-outer">
+    <div class="white-separator-side">
+      <span class="white-separator-arrow left">
+        <svg viewBox="0 0 42 22"><polygon points="0,11 42,0 42,22" /></svg>
+      </span>
+    </div>
+    <div class="white-separator">
+      <div class="white-separator-line"></div>
+      <div class="white-separator-circle"></div>
+    </div>
+    <div class="white-separator-side">
+      <span class="white-separator-arrow right">
+        <svg viewBox="0 0 42 22"><polygon points="42,11 0,0 0,22" /></svg>
+      </span>
+    </div>
+  </div>
+
+  <section class="section-why">
+    <h2>Why Sniffer Pro?</h2>
+    <div class="why-subtitle">
+      Stop chasing your tail across ten different platforms. We put everything you need right here in one doghouse.
+    </div>
+    <div class="why-features">
+      <div class="why-feature-col">
+        <ul>
+          <li>Fetch insights in seconds, not hours, with our instant AI analysis.</li>
+          <li>Make smarter plays with clear, comprehensive risk ratings.</li>
+          <li>Dig up institutional-grade data sources from one simple dashboard.</li>
+        </ul>
+      </div>
+      <div class="why-feature-col">
+        <ul>
+          <li>Get on the scent of hot tokens before the rest of the pack arrives.</li>
+          <li>Don't get fooled by rug pulls anymore.</li>
+          <li>Use our built-in tool for exceptional speed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator Line between "Why Sniffer Pro?" and "Ready to Join the Pack?" -->
+  <div class="white-separator-outer">
+    <div class="white-separator-side">
+      <span class="white-separator-arrow left">
+        <svg viewBox="0 0 42 22"><polygon points="0,11 42,0 42,22" /></svg>
+      </span>
+    </div>
+    <div class="white-separator">
+      <div class="white-separator-line"></div>
+      <div class="white-separator-circle"></div>
+    </div>
+    <div class="white-separator-side">
+      <span class="white-separator-arrow right">
+        <svg viewBox="0 0 42 22"><polygon points="42,11 0,0 0,22" /></svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- NEW JOIN THE PACK SECTION -->
+  <section class="section-joinpack">
+    <h2>Ready to Join the Pack?</h2>
+    <div class="joinpack-desc">
+      Thousands of traders and degens trust Sniffer Pro to lead them to the alpha. What are you waiting for?
+    </div>
+    <div class="joinpack-btn-wrap">
+      <div class="bookmark-btn-placeholder">
+        Use the integration
+      </div>
+    </div>
+    <!-- Bookmarklet script button will go here (TODO: insert JS bookmarklet for integration) -->
+  </section>
+  <!-- END JOIN THE PACK SECTION -->
+
   <footer>
-    <div style="margin-top:2em;padding:2em 0 1em 0;text-align:center;background:#181c20;font-size:1em;opacity:.95;">
-      <div>
+    <div style="margin-top:1em;padding:2em 0 1em 0;text-align:center;background:#1D2634;font-size:1em;opacity:.95;">
+      <div style="margin-bottom:1em;">
         Automated scam detection, contract auditing, and risk analysis
         <br>
         Integration with platforms like Axiom, GMGN, Photon... for fast search
       </div>
-      <!-- BOUTON BOOKMARK ET SCRIPT -->
-      <div>
-        <button id="bookmarkButton" title="Use integration bookmarklet">Use the integration</button>
-        <!-- SCRIPT BOOKMARK ICI -->
-      </div>
-      <div style="margin:2em 0 0 0;">
+      <div style="margin:0em 0 0 0;">
         Sniffer Pro smart contract scanner technology is part of Solidus Labs’ full spectrum trade surveillance solutions.<br>
         Visit: <a href="https://soliduslabs.com/" target="_blank" class="dex-link">https://soliduslabs.com</a>
       </div>
-      <div style="color:#ffcd26;margin-top:2em;">
+      <div style="color:#60A6FA;margin-top:2em;">
         © Copyright Solidus Labs 2025 
       </div>
     </div>
@@ -205,15 +678,15 @@
         if (data.pairs && data.pairs.length > 0) {
           const pair = data.pairs[0];
           html += `<div class="dex-result-box">`;
-          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#ffcd26;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#ffcd26;text-decoration:underline;width:auto;">${pair.baseToken?.symbol || '-'} / ${pair.quoteToken?.symbol || '-'}</a></div>`;
-          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Chain:</span> <span>${pair.chainId}</span></div>`;
-          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Base Token:</span> <span>${pair.baseToken?.symbol || '-'}${pair.baseToken?.name ? ' ('+pair.baseToken.name+')' : ''}</span></div>`;
-          html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Price:</span> <span>${pair.priceUsd ? '$'+Number(pair.priceUsd).toPrecision(7) : '-'}</span></div>`;
-          if (pair.liquidity?.usd) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Liquidity:</span> <span>$${Number(pair.liquidity.usd).toLocaleString()}</span></div>`;
-          if (pair.txns && typeof pair.txns.h24 === "number") html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Transactions (24h):</span> <span>${pair.txns.h24}</span></div>`;
-          if (pair.volume?.h24) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Volume (24h):</span> <span>$${Number(pair.volume.h24).toLocaleString()}</span></div>`;
-          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" class="dex-link">${pair.websites[0].url}</a></div>`;
-          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#ffcd26;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" class="dex-link">${s.url}</a>`).join(', ')}</div>`;
+          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#60A6FA;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#60A6FA;text-decoration:underline;width:auto;">${pair.baseToken?.symbol || '-'} / ${pair.quoteToken?.symbol || '-'}</a></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Chain:</span> <span>${pair.chainId}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Base Token:</span> <span>${pair.baseToken?.symbol || '-'}${pair.baseToken?.name ? ' ('+pair.baseToken.name+')' : ''}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Price:</span> <span>${pair.priceUsd ? '$'+Number(pair.priceUsd).toPrecision(7) : '-'}</span></div>`;
+          if (pair.liquidity?.usd) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Liquidity:</span> <span>$${Number(pair.liquidity.usd).toLocaleString()}</span></div>`;
+          if (pair.txns && typeof pair.txns.h24 === "number") html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Transactions (24h):</span> <span>${pair.txns.h24}</span></div>`;
+          if (pair.volume?.h24) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Volume (24h):</span> <span>$${Number(pair.volume.h24).toLocaleString()}</span></div>`;
+          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" class="dex-link">${pair.websites[0].url}</a></div>`;
+          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" class="dex-link">${s.url}</a>`).join(', ')}</div>`;
           html += `</div>`;
         } else {
           html = `<span class="dex-warning">No result found for this address or pair.</span>`;
@@ -228,6 +701,749 @@
       if (e.key === 'Enter') document.getElementById('analyzeButton').click();
     });
   </script>
-  <!-- Ton script JS pour le bookmark peut être inséré ici -->
+</body>
+</html>
+Copilot said: ```html name=index.html <!DOCTYPE html> <html> <head> <meta charset="utf-8">
+
+index.html
+v21
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SnifferPro</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+Modifications principales :
+
+Ajoute la ligne dans le <head> :
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+Remplace dans tout le CSS :
+font-family: 'Nunito Sans', Arial, sans-serif; →
+font-family: 'Inter', 'Nunito Sans', Arial, sans-serif;
+Ajoute font-family: inherit; dans chaque bloc où tu veux forcer l’utilisation d’Inter (facultatif si tu veux hériter du body partout, mais utile dans certains composants personnalisés).
+Tout ton texte s’affichera désormais en Inter par défaut.
+
+You said: change pour la police de texte IBM
+change pour la police de texte IBM Plex Sans et rend entier modifié
+Copilot said: ```html name=index.html <!DOCTYPE html> <html> <head> <meta charset="utf-8">
+
+index.html
+v22
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SnifferPro</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+Tout le texte du site utilise maintenant la police IBM Plex Sans !
+
+Uploaded image: Capture d’écran 2025-09-11 à 15.00.44.png
+You said: dis moi comment reduire l'espace entre le
+dis moi comment reduire l'espace entre le dessous du texte " Protect Your Crypto
+Advanced memecoin analysis to detect rug pulls, honeypots, and scams
+before you invest " et l'endroit de la barre et du bouton : <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SnifferPro</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/bookmark.png">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="SnifferPro is a smart contract scam scanner monitoring millions of tokens and scams. Scan any fungible token on Ethereum, Polygon, BNB Chain, or other blockchain to detect potential risks.">
+  <link rel="icon" href="/logo2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c4878894de063c7e.css">
+  <style>
+    body {
+      background: #1D2634;
+      color: #fff;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    ::selection {
+      background: #60A6FA;
+      color: #fff;
+    }
+    .navbar-sniffer {
+      width: 100%;
+      background: #202a3a;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 0 0 26px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 18px 0 #00000018;
+      z-index: 100;
+      position: relative;
+    }
+    .navbar-sniffer-logo {
+      height: 34px;
+      width: auto;
+      margin-right: 16px;
+      display: inline-block;
+      vertical-align: middle;
+      user-select: none;
+    }
+    .navbar-sniffer-title {
+      color: #fff;
+      font-size: 2.05em;
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-family: inherit;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      text-shadow: 0 2px 12px #0006;
+      /* Responsive */
+    }
+    @media (max-width: 600px) {
+      .navbar-sniffer {
+        padding-left: 10px;
+        height: 50px;
+      }
+      .navbar-sniffer-logo {
+        height: 26px;
+        margin-right: 9px;
+      }
+      .navbar-sniffer-title {
+        font-size: 1.15em;
+      }
+    }
+
+    .main-center {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+margin-top: 18px;
+    }
+
+    /* Hero Section (Protect Your Crypto) */
+    .sniffer-hero {
+      background: #1d2634;
+      padding: 48px 0 44px 0;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .sniffer-hero-title {
+      color: #fff;
+      font-size: 4.2em;
+      font-weight: 900;
+      margin: 0 0 18px 0;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+      line-height: 1.14;
+      text-shadow: 0 2px 16px #0004;
+    }
+    .sniffer-hero-subtitle {
+      color: #cdd4df;
+      font-size: 2em;
+      font-weight: 400;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.26;
+      opacity: 0.95;
+      text-shadow: 0 1px 4px #0002;
+    }
+    @media (max-width: 900px) {
+      .sniffer-hero-title {
+        font-size: 2.5em;
+      }
+      .sniffer-hero-subtitle {
+        font-size: 1.18em;
+      }
+      .sniffer-hero { padding: 28px 0 18px 0; }
+    }
+
+    #tokenInput {
+      width: 420px;
+      max-width: 90vw;
+      font-size: 1.2em;
+      border-radius: 32px;
+      border: none;
+      box-shadow: 0 2px 8px #0003;
+      padding: 0.8em 1.4em;
+      margin-bottom: 2em;
+      outline: none;
+      background: #fff;
+      color: #222;
+      transition: box-shadow 0.2s;
+    }
+    #tokenInput:focus {
+      box-shadow: 0 4px 16px #60A6FA99;
+    }
+    #analyzeButton {
+      display: inline-block;
+      background: #60A6FA;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 2em;
+      padding: 0.7em 2.2em;
+      font-size: 1.4em;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 0 auto 2em auto;
+      box-shadow: 0 2px 8px #0002;
+      user-select: none;
+      transition: background 0.13s, color 0.13s;
+      outline: none;
+    }
+    #analyzeButton:hover,
+    #analyzeButton:focus {
+      background: #a5d1fc;
+      color: #111;
+    }
+
+    .dex-result-box {
+      background: #191c1f;
+      color: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 #0007;
+      padding: 1.6em 2em 1.4em 2em;
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto 2em auto;
+      font-size: 1.15em;
+      font-family: inherit;
+      word-break: break-all;
+    }
+    .dex-result-box a { color: #60A6FA; text-decoration: underline; }
+    .dex-error {
+      color: #d32f2f;
+      font-size: 1.3em;
+      margin-top: 1.5em;
+    }
+    .dex-warning {
+      color: #60A6FA;
+      font-size: 1.15em;
+      margin-top: 1.5em;
+    }
+    .dex-link {
+      color: #60A6FA;
+      text-decoration: underline;
+    }
+
+    /* --- NEW SECTION STYLES --- */
+    .section-toolkit {
+      background: #26303F;
+      padding: 60px 0 30px 0;
+      text-align: center;
+      width: 100%;
+    }
+    .section-toolkit h2 {
+      color: #60A6FA;
+      font-size: 2.8em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-toolkit .toolkit-subtitle {
+      font-size: 1.35em;
+      margin-bottom: 2.5em;
+      font-weight: 400;
+      color: #fff;
+      opacity: 0.95;
+    }
+    .toolkit-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto 3em auto;
+    }
+    .toolkit-card {
+      background: #191c1f;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 #0007;
+      color: #fff;
+      flex: 1 1 320px;
+      max-width: 350px;
+      min-width: 280px;
+      padding: 2em 1.5em 1.6em 1.5em;
+      margin: 0;
+      text-align: left;
+      font-family: inherit;
+      border: 1.5px solid #222;
+      position: relative;
+      transition: transform 0.13s;
+    }
+    .toolkit-card:hover { transform: translateY(-4px) scale(1.02);}
+    .toolkit-card .icon {
+      font-size: 2em;
+      color: #60A6FA;
+      margin-bottom: 0.6em;
+      display: block;
+    }
+    .toolkit-card h3 {
+      font-size: 1.3em;
+      margin: 0 0 0.5em 0;
+      font-family: inherit;
+      font-weight: 700;
+      color: #60A6FA;
+    }
+    .toolkit-card p {
+      margin: 0;
+      font-size: 1.07em;
+      opacity: 0.97;
+    }
+    /* Why Sniffer Pro Section */
+    .section-why {
+      background: #26303F;
+      padding: 52px 0 40px 0;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+    }
+    .section-why h2 {
+      color: #60A6FA;
+      font-size: 2.5em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-why .why-subtitle {
+      font-size: 1.25em;
+      margin-bottom: 2.2em;
+      color: #fff;
+      opacity: 0.95;
+    }
+    .why-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px 16px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .why-feature-col {
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 390px;
+      text-align: left;
+      padding: 0 1.2em;
+    }
+    .why-feature-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .why-feature-col li {
+      font-size: 1.08em;
+      margin-bottom: 1.7em;
+      position: relative;
+      padding-left: 2em;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+    .why-feature-col li:before {
+      content: '✓';
+      color: #60A6FA;
+      font-size: 1.14em;
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      font-weight: 700 !important;
+      font-family: inherit;
+    }
+
+    /* -- JOIN THE PACK SECTION -- */
+    .section-joinpack {
+      background: #26303F;
+      /* Reduce top margin to shrink gap with previous section */
+      padding: 24px 0 70px 0;
+      text-align: center;
+      width: 100%;
+      position: relative;
+    }
+    .section-joinpack h2 {
+      color: #60A6FA;
+      font-size: 2.6em;
+      margin: 0 0 0.4em 0;
+      font-family: inherit;
+      font-weight: 800;
+    }
+    .section-joinpack .joinpack-desc {
+      font-size: 1.32em;
+      color: #fff;
+      margin-bottom: 2.5em;
+      font-weight: 400;
+      opacity: 0.94;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-joinpack .joinpack-btn-wrap {
+      margin-top: 1.7em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 76px;
+    }
+    .section-joinpack .bookmark-btn-placeholder {
+      display: inline-block;
+      min-width: 260px;
+      min-height: 56px;
+      border-radius: 32px;
+      background: #60A6FA;
+      color: #000;
+      font-size: 1.35em;
+      font-weight: 700;
+      text-align: center;
+      line-height: 56px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      border: 2px solid #000;
+      opacity: 0.95;
+      /* Button is just a placeholder. Replace with real bookmarklet button + JS */
+    }
+
+    /* White separator bar with circle, on colored background (not transparent) */
+    .white-separator-outer {
+      width: 100%;
+      background: #26303F !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      min-height: 48px;
+      padding: 0;
+    }
+    .white-separator {
+      width: 100%;
+      max-width: 900px;
+      height: 38px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+    .white-separator-side {
+      flex: 1 1 0%;
+      height: 48px;
+      background: #26303F;
+      max-width: 23%;
+      min-width: 90px;
+      border: none;
+      margin: 0;
+      z-index: 3;
+      position: relative;
+    }
+    .white-separator-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      background: #26303F;
+    }
+    .white-separator-arrow svg {
+      display: block;
+      width: 42px;
+      height: 22px;
+      fill: #26303F;
+    }
+    .white-separator-arrow.left {
+      left: 0;
+      justify-content: flex-start;
+      border-radius: 8px 0 0 8px;
+    }
+    .white-separator-arrow.right {
+      right: 0;
+      justify-content: flex-end;
+      border-radius: 0 8px 8px 0;
+    }
+    .white-separator-center {
+      flex: 4 1 0%;
+      display: flex;
+      align-items: center;
+      height: 38px;
+      position: relative;
+      min-width: 30%;
+      z-index: 4;
+      background: none;
+    }
+    .white-separator-line {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, transparent 0%, #fff 22%, #fff 78%, transparent 100%);
+      border: none;
+      z-index: 5;
+      position: relative;
+    }
+    .white-separator-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      z-index: 6;
+      box-shadow: 0 0 22px 0 #fff5;
+      border: 0;
+      display: block;
+    }
+    @media (max-width: 1200px) {
+      .white-separator, .white-separator-outer { max-width: 97vw; }
+      .white-separator-side { min-width: 40px; }
+    }
+    @media (max-width: 900px) {
+      .toolkit-grid, .why-features { flex-direction: column; gap: 20px;}
+      .toolkit-card, .why-feature-col { max-width: 98vw;}
+      .section-toolkit, .section-why, .section-joinpack { padding: 30px 0 20px 0; }
+      .section-joinpack { padding-top: 10px; }
+      .white-separator, .white-separator-outer { max-width: 99vw; }
+      .white-separator-side { max-width: 23vw; }
+    }
+    @media (max-width: 600px) {
+      #tokenInput {
+        width: 96vw;
+        font-size: 1em;
+        padding: 0.7em 1em;
+      }
+      .dex-result-box {
+        padding: 0.6em;
+        font-size: 1em;
+      }
+      .main-center img {
+        width: 94vw;
+        max-width: 330px;
+      }
+      .toolkit-card { padding: 1.2em 0.6em 1em 0.6em;}
+      .toolkit-grid, .why-features { gap: 10px;}
+      .section-joinpack .bookmark-btn-placeholder { min-width: 160px; font-size: 1.1em; }
+      .white-separator-side { min-width: 10px; }
+      .white-separator-arrow { width: 30px; }
+      .white-separator-arrow svg { width: 30px; }
+      .sniffer-hero-title { font-size: 1.45em; }
+      .sniffer-hero-subtitle { font-size: 0.95em; }
+      .sniffer-hero { padding: 14px 0 12px 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR SNIPPER PRO (remplace le gros logo) -->
+  <nav class="navbar-sniffer">
+    <img src="logo.png" alt="SnifferPro logo" class="navbar-sniffer-logo" draggable="false">
+    <span class="navbar-sniffer-title">SnifferPro</span>
+  </nav>
+  <!-- HERO SECTION -->
+  <section class="sniffer-hero">
+    <div class="sniffer-hero-title">Protect Your Crypto</div>
+    <div class="sniffer-hero-subtitle">
+      Advanced memecoin analysis to detect rug pulls, honeypots, and scams<br>
+      before you invest
+    </div>
+  </section>
+  <div class="main-center">
+    <div style="text-align:center">
+      <!-- BARRE DE RECHERCHE CENTREE -->
+      <input
+        id="tokenInput"
+        type="search"
+        placeholder="Enter token address or pair (ex: SOL/USDC or 0x...)"
+        maxlength="80"
+        autocomplete="off"
+      />
+      <!-- BOUTON ANALYZE CENTRE -->
+      <br>
+      <button
+        id="analyzeButton"
+        title="Analyze token with Dexscreener"
+      >
+        Analyze
+      </button>
+      <!-- AFFICHAGE RESULTAT OU ERREUR -->
+      <div id="dexResult" style="margin-top:1.5em;min-height:2em;"></div>
+    </div>
+  </div>
+
+  <!-- SECTION INTERMEDIAIRE AJOUTEE -->
+  <section class="section-toolkit">
+    <h2>The Sniffer's Toolkit</h2>
+    <div class="toolkit-subtitle">
+      All the tools your trusty companion uses to separate the treats from the trash,<br>
+      powered by cutting-edge AI and real-time data.
+    </div>
+    <div class="toolkit-grid">
+      <div class="toolkit-card">
+        <span class="icon">🟦</span>
+        <h3>The Sniff Test</h3>
+        <p>Our AI sniffs out the good, the bad, and the fishy, turning complex on-chain data into a simple "Good Boy" signal.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">🛡️</span>
+        <h3>Guard Dog Security</h3>
+        <p>We check for locked liquidity, renounced contracts, and other rug-pull red flags. We bark <strong>*before*</strong> you get bit.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">📊</span>
+        <h3>The Chase</h3>
+        <p>Live price action, trading volume, and social buzz. Know when the chase is on and follow the momentum.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">⚡</span>
+        <h3>Instant Fetch</h3>
+        <p>No more digging through dozens of sites. Get a full, easy-to-read report on any token in under 10 seconds.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">🔍</span>
+        <h3>Pack Dynamics</h3>
+        <p>See who's holding the leash. We track whale wallets and concentration risks so you know who runs the pack.</p>
+      </div>
+      <div class="toolkit-card">
+        <span class="icon">✨</span>
+        <h3>Purebred for Solana</h3>
+        <p>Born and bred on Solana. Our tool speaks fluent SPL and is native to the ecosystem's top DEXs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator Line above "Why Sniffer Pro?" -->
+  <div class="white-separator-outer">
+    <div class="white-separator-side">
+      <span class="white-separator-arrow left">
+        <svg viewBox="0 0 42 22"><polygon points="0,11 42,0 42,22" /></svg>
+      </span>
+    </div>
+    <div class="white-separator">
+      <div class="white-separator-line"></div>
+      <div class="white-separator-circle"></div>
+    </div>
+    <div class="white-separator-side">
+      <span class="white-separator-arrow right">
+        <svg viewBox="0 0 42 22"><polygon points="42,11 0,0 0,22" /></svg>
+      </span>
+    </div>
+  </div>
+
+  <section class="section-why">
+    <h2>Why Sniffer Pro?</h2>
+    <div class="why-subtitle">
+      Stop chasing your tail across ten different platforms. We put everything you need right here in one doghouse.
+    </div>
+    <div class="why-features">
+      <div class="why-feature-col">
+        <ul>
+          <li>Fetch insights in seconds, not hours, with our instant AI analysis.</li>
+          <li>Make smarter plays with clear, comprehensive risk ratings.</li>
+          <li>Dig up institutional-grade data sources from one simple dashboard.</li>
+        </ul>
+      </div>
+      <div class="why-feature-col">
+        <ul>
+          <li>Get on the scent of hot tokens before the rest of the pack arrives.</li>
+          <li>Don't get fooled by rug pulls anymore.</li>
+          <li>Use our built-in tool for exceptional speed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator Line between "Why Sniffer Pro?" and "Ready to Join the Pack?" -->
+  <div class="white-separator-outer">
+    <div class="white-separator-side">
+      <span class="white-separator-arrow left">
+        <svg viewBox="0 0 42 22"><polygon points="0,11 42,0 42,22" /></svg>
+      </span>
+    </div>
+    <div class="white-separator">
+      <div class="white-separator-line"></div>
+      <div class="white-separator-circle"></div>
+    </div>
+    <div class="white-separator-side">
+      <span class="white-separator-arrow right">
+        <svg viewBox="0 0 42 22"><polygon points="42,11 0,0 0,22" /></svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- NEW JOIN THE PACK SECTION -->
+  <section class="section-joinpack">
+    <h2>Ready to Join the Pack?</h2>
+    <div class="joinpack-desc">
+      Thousands of traders and degens trust Sniffer Pro to lead them to the alpha. What are you waiting for?
+    </div>
+    <div class="joinpack-btn-wrap">
+      <div class="bookmark-btn-placeholder">
+        Use the integration
+      </div>
+    </div>
+    <!-- Bookmarklet script button will go here (TODO: insert JS bookmarklet for integration) -->
+  </section>
+  <!-- END JOIN THE PACK SECTION -->
+
+  <footer>
+    <div style="margin-top:1em;padding:2em 0 1em 0;text-align:center;background:#1D2634;font-size:1em;opacity:.95;">
+      <div style="margin-bottom:1em;">
+        Automated scam detection, contract auditing, and risk analysis
+        <br>
+        Integration with platforms like Axiom, GMGN, Photon... for fast search
+      </div>
+      <div style="margin:0em 0 0 0;">
+        Sniffer Pro smart contract scanner technology is part of Solidus Labs’ full spectrum trade surveillance solutions.<br>
+        Visit: <a href="https://soliduslabs.com/" target="_blank" class="dex-link">https://soliduslabs.com</a>
+      </div>
+      <div style="color:#60A6FA;margin-top:2em;">
+        © Copyright Solidus Labs 2025 
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('analyzeButton').onclick = async function() {
+      const input = document.getElementById('tokenInput').value.trim();
+      const resultDiv = document.getElementById('dexResult');
+      resultDiv.innerHTML = '';
+      if (!input) {
+        resultDiv.innerHTML = '<span class="dex-error">Please enter a token address or pair (ex: SOL/USDC or 0x...)</span>';
+        return;
+      }
+      resultDiv.innerHTML = '⏳ Fetching data...';
+      try {
+        const resp = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${encodeURIComponent(input)}`);
+        if (!resp.ok) throw new Error('Token/pair not found or API error');
+        const data = await resp.json();
+        let html = '';
+        if (data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
+          html += `<div class="dex-result-box">`;
+          html += `<div style="font-weight:700;margin-bottom:.7em;"><span style="color:#60A6FA;">DEX Pair:</span> <a href="${pair.url}" target="_blank" style="color:#60A6FA;text-decoration:underline;width:auto;">${pair.baseToken?.symbol || '-'} / ${pair.quoteToken?.symbol || '-'}</a></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Chain:</span> <span>${pair.chainId}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Base Token:</span> <span>${pair.baseToken?.symbol || '-'}${pair.baseToken?.name ? ' ('+pair.baseToken.name+')' : ''}</span></div>`;
+          html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Price:</span> <span>${pair.priceUsd ? '$'+Number(pair.priceUsd).toPrecision(7) : '-'}</span></div>`;
+          if (pair.liquidity?.usd) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Liquidity:</span> <span>$${Number(pair.liquidity.usd).toLocaleString()}</span></div>`;
+          if (pair.txns && typeof pair.txns.h24 === "number") html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Transactions (24h):</span> <span>${pair.txns.h24}</span></div>`;
+          if (pair.volume?.h24) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Volume (24h):</span> <span>$${Number(pair.volume.h24).toLocaleString()}</span></div>`;
+          if (pair.websites && pair.websites.length) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Website:</span> <a href="${pair.websites[0].url}" target="_blank" class="dex-link">${pair.websites[0].url}</a></div>`;
+          if (pair.socials && pair.socials.length) html += `<div style="margin-bottom:.25em;"><span style="color:#60A6FA;font-weight:600;">Social:</span> ${pair.socials.map(s => `<a href="${s.url}" target="_blank" class="dex-link">${s.url}</a>`).join(', ')}</div>`;
+          html += `</div>`;
+        } else {
+          html = `<span class="dex-warning">No result found for this address or pair.</span>`;
+        }
+        resultDiv.innerHTML = html;
+      } catch (e) {
+        resultDiv.innerHTML = `<span class="dex-error">❌ ${e.message}</span>`;
+      }
+    };
+    // Enter key triggers Analyze
+    document.getElementById('tokenInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') document.getElementById('analyzeButton').click();
+    });
+  </script>
 </body>
 </html>
